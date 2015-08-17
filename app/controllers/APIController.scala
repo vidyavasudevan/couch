@@ -11,9 +11,7 @@ object APIController extends Controller {
 
   def addUser() = Action {
     request =>
-      val reqJson = request.body
-      val userModel = reqJson.asJson.get.as[User]
-
+      val userModel = request.body.asJson.get.as[User]
       val add = Barista.addUser(userModel)
       play.Logger.info(s"Add Result = $add")
       Ok(Json.toJson(userModel))

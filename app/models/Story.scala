@@ -8,12 +8,12 @@ import play.api.libs.functional.syntax._
  * Created by vidya.v on 5/25/15.
  */
   class Story(
-     id: String,
-     userId: String,
-     problem: String,
-     problemTags: String,
-     solution: String,
-     solutionTags: String
+     val id: String,
+     val userId: String,
+     val problem: String,
+     val problemTags: String,
+     val solution: String,
+     val solutionTags: String
  )
 
  object Story {

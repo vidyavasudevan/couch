@@ -5,16 +5,15 @@ import play.api.libs.functional.syntax._
 /**
  * Created by vidya.v on 4/26/15.
  */
- class User(
-    id:       String,
-    fullname: String,
-    email: String,
-    username: String,
-    password: String,
-    location: String
+ class User( val id:String,
+    val fullname: String,
+    val email: String,
+    val username: String,
+    val password: String,
+    val location: String
    )
-
 object User {
+
   implicit val userReads: Reads[User] = (
     (JsPath \ "fullName").read[String] and
       (JsPath \ "email").read[String] and

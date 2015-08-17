@@ -5,6 +5,6 @@ package Util
  */
 object Util {
 
-  def id = java.util.UUID.randomUUID.toString
+  def generatedId = java.util.UUID.randomUUID.toString
 
 }
