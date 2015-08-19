@@ -22,6 +22,6 @@ object APIController extends Controller {
        val story = request.body.asJson.get.as[Story]
        val add = Barista.addStory(story)
        play.Logger.info(s"AddStory result = $add")
-       Ok(Json.toJson(userModel))
+       Ok(Json.toJson(story))
   }
 }

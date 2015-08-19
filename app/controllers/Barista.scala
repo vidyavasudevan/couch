@@ -31,7 +31,7 @@ object Barista {
               val result = SQL(
               """ INSERT INTO STORY
                 | VALUES ({id}, {userId}, {problem}, {problemTags}, {solution}, {solutionTags})
-              """).on(
+              """.stripMargin).on(
                    "id" -> story.id,
                    "userId" -> story.userId,
                    "problem" -> story.problem,

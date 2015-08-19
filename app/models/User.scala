@@ -5,7 +5,8 @@ import play.api.libs.functional.syntax._
 /**
  * Created by vidya.v on 4/26/15.
  */
- class User( val id:String,
+class User(
+    val id: String,
     val fullname: String,
     val email: String,
     val username: String,
@@ -14,28 +15,30 @@ import play.api.libs.functional.syntax._
    )
 object User {
 
-  implicit val userReads: Reads[User] = (
-    (JsPath \ "fullName").read[String] and
-      (JsPath \ "email").read[String] and
-      (JsPath \ "userName").read[String] and
-      (JsPath \ "password").read[String] and
-      (JsPath \ "location").read[String]
+  implicit val userReader = (
+     (__ \ "name").read[String] and
+      (__ \ "email").read[String] and
+      (__ \"username").read[String] and
+      (__ \ "password").read[String] and
+      (__ \"location").format[String]
     )(User.apply _)
 
-  implicit val userWrites: Writes[User] = (
-       Json.obj(
-        "name" -> u.fullname,
-        "email" -> u.email,
-        "username" -> u.username,
-        "location" -> u.location
-      )
-    )
+   implicit val userWrites = (
+    (__ \ "id").write[String] and
+    (__ \ "name").write[String] and
+    (__ \ "email").write[String] and
+    (__ \"username").write[String] and
+    (__ \"location").write[String]
+  ) (User.unapply _)
 
-
-
-   def apply(fullName: String, email: String, userName: String, password: String, location: String): User = {
-     new User(id, fullName, email, userName, password, location )
+  def apply(name: String, email: String, userName: String, password: String, location: String) = {
+      new User(id,name, email, userName, password, location)
   }
 
+  def unapply(u: User) = {
+    (u.id, u.fullname, u.email, u.username, u.location)
+  }
   def id = java.util.UUID.randomUUID.toString
+
+
 }
