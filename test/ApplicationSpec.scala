@@ -26,5 +26,9 @@ class ApplicationSpec extends Specification {
       contentType(home) must beSome.which(_ == "text/html")
       contentAsString(home) must contain ("Your new application is ready.")
     }
+
+    "add vertex to the graphDB" in new WithApplication {
+
+    }
   }
 }

@@ -9,4 +9,6 @@ libraryDependencies ++= Seq(
   "mysql" % "mysql-connector-java" % "5.1.+"
 )
 
+libraryDependencies += "com.tinkerpop.blueprints" % "blueprints-orient-graph" % "2.4.0"
+
 play.Project.playScalaSettings

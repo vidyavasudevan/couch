@@ -24,4 +24,11 @@ object APIController extends Controller {
        play.Logger.info(s"AddStory result = $add")
        Ok(Json.toJson(story))
   }
+
+  def testGraph() = Action {
+    request =>
+      val res = GraphDB.addVertex("test")
+      play.Logger.debug(s"res = $res")
+      Ok(Json.obj("result" -> res))
+  }
 }

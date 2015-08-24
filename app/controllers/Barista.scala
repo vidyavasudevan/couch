@@ -6,6 +6,7 @@ import play.api.Play.current
 
 /**
  * Created by vidya.v on 4/29/15.
+ * This class is for interacting with the Mysql relational database.
  */
 object Barista {
 
