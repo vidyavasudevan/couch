@@ -27,8 +27,8 @@ object APIController extends Controller {
 
   def testGraph() = Action {
     request =>
-      val res = GraphDB.addVertex("test")
-      play.Logger.debug(s"res = $res")
-      Ok(Json.obj("result" -> res))
+     // val res = GraphDB.addVertex("test")
+      //play.Logger.debug(s"res = $res")
+      Ok(Json.obj("result" -> GraphDB.getVertex("xyz")))
   }
 }

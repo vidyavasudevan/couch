@@ -2,6 +2,7 @@ package controllers
 
 import com.tinkerpop.blueprints.{Edge, Vertex}
 import com.tinkerpop.blueprints.impls.orient.OrientGraph
+import scala.collection.JavaConverters._
 /**
  * Created by vidya.v on 8/18/15.
  */
@@ -21,7 +22,14 @@ object GraphDB {
         val luca: Vertex  = graph.addVertex("1", "name", "Luca"); // 1st OPERATION: IMPLICITLY BEGIN A TRANSACTION
         val marko: Vertex  = graph.addVertex("2", "name", "Marko");
         val lucaKnowsMarko: Edge  = graph.addEdge("3", luca, marko, "knows");
-        lucaKnowsMarko.getLabel
+        luca.getId
+    }
+  }
+
+  def getVertex(id: Any) = {
+    graphWrapper {
+      graph =>
+        graph.getVertices.asScala.toList.mkString(",")
     }
   }
 
